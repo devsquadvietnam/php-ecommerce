@@ -23,3 +23,18 @@
     <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
     <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../assets/js/pages/chart/chart-page-init.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.btnDeleteProduct').click(function(e) {
+                e.preventDefault();
+
+                const id = $(this).data('id');
+
+                const result = confirm('Are you sure to delete this product ?');
+                if (result) {
+                    window.location.replace(`/admin/products/backend/delete-product.php?id=${id}`);
+                }
+            })
+        })
+    </script>

@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <!-- <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" /> -->
     <!-- Custom CSS -->
-    <link href="./assets/css/style.min.css" rel="stylesheet" />
+    <link href="../assets/css/style.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,15 +39,15 @@
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
-        <?php include_once './layouts/partials/header.php'; ?>
+        <?php include_once '../layouts/partials/header.php'; ?>
         <!-- ============================================================== -->
-        <?php include_once './layouts/partials/sidebar.php'; ?>
+        <?php include_once '../layouts/partials/sidebar.php'; ?>
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <?php include_once './components/dashboard.php' ?>
-            <?php include_once './layouts/partials/footer.php'; ?>
+            <?php include_once '../components/dashboard.php' ?>
+            <?php include_once '../layouts/partials/footer.php'; ?>
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
@@ -57,7 +57,7 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->
-    <?php include_once './layouts/scripts.php' ?>
+    <?php include_once '../layouts/scripts.php' ?>
 </body>
 
 </html>
