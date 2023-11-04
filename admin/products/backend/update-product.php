@@ -5,11 +5,12 @@ include '../../backend/db_connection.php';
 
 $id = $_POST['id'];
 $name = $_POST['name'];
+$categoryId = $_POST['category_id'];
 $price = $_POST['price'];
 $quantity = $_POST['quantity'];
 $updatedAt = date('Y-m-d H:i:s');
 
-$sql = "UPDATE products SET name = '{$name}', price = {$price}, quantity = {$quantity}, updated_at = '{$updatedAt}' WHERE id = {$id};";
+$sql = "UPDATE products SET category_id = '{$categoryId}', name = '{$name}', price = {$price}, quantity = {$quantity}, updated_at = '{$updatedAt}' WHERE id = {$id};";
 
 $result = $connection->query($sql);
 

@@ -10,16 +10,14 @@ if (!is_numeric($id)) {
 }
 
 
-$sql = "SELECT * FROM products WHERE id = {$id}";
+$sql = "SELECT * FROM categories WHERE id = {$id}";
 $result = $connection->query($sql);
-$product = NULL;
+$category = NULL;
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $product['id'] = $row['id'];
-        $product['name'] = $row['name'];
-        $product['category_id'] = $row['category_id'];
-        $product['price'] = $row['price'];
-        $product['quantity'] = $row['quantity'];
+        $category['id'] = $row['id'];
+        $category['name'] = $row['name'];
+        $category['parent_id'] = $row['parent_id'];
     }
 } else {
     echo '<div><img width="100%" src="/admin/assets/images/404.jpg" /></div>';
@@ -37,42 +35,32 @@ if ($categoriesResult->num_rows > 0) {
         ];
     }
 }
+
+
 ?>
 
 <div class="card">
-    <form method="POST" action="/admin/products/backend/update-product.php" class="form-horizontal">
+    <form method="POST" action="/admin/categories/backend/update-category.php" class="form-horizontal">
         <div class="card-body">
-            <h4 class="card-title">Edit Product</h4>
+            <h4 class="card-title">Edit category</h4>
             <input type="hidden" name="id" value="<?php echo $id; ?>" />
             <div class="form-group row">
                 <label for="fname" class="col-sm-3 text-end control-label col-form-label">Name</label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" class="form-control" id="fname" placeholder="Product name" value="<?php echo $product['name']; ?>" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="price" class="col-sm-3 text-end control-label col-form-label">Price</label>
-                <div class="col-sm-9">
-                    <input type="number" name="price" class="form-control" id="price" placeholder="Price" value="<?php echo $product['price']; ?>" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="Quantity" class="col-sm-3 text-end control-label col-form-label">Quantity</label>
-                <div class="col-sm-9">
-                    <input type="number" name="quantity" class="form-control" id="Quantity" placeholder="Quantity" value="<?php echo $product['quantity']; ?>" />
+                    <input type="text" name="name" class="form-control" id="fname" placeholder="Name" value="<?php echo $category['name']; ?>" />
                 </div>
             </div>
             <div class="form-group row">
                 <label for="fname" class="col-sm-3 text-end control-label col-form-label">Category</label>
                 <div class="col-sm-9">
-                    <select class="form-control" name="category_id">
+                    <select class="form-control" name="parent_id">
                         <option value="">Select category</option>
                         <?php foreach ($categories as $cat) : ?>
                             <option 
-                                value="<?php echo $cat['id']; ?>"
-                                <?php if($product['category_id'] === $cat['id']): ?> selected <?php endif; ?>
-                                >
-                                <?php echo $cat['name']; ?>
+                                value="<?php echo $cat['id']; ?>" 
+                               <?php if($category['parent_id'] === $cat['id']): ?>  selected <?php endif ?> 
+                             >
+                             <?php echo $cat['name']; ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

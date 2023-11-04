@@ -1,6 +1,6 @@
 <?php 
-    $sql = 'SELECT P.id, P.name, P.price, P.quantity, P.created_at, P.updated_at, C.name as category_name
-     FROM products P LEFT JOIN categories C ON P.category_id = C.id ORDER BY created_at DESC;';
+    $sql = 'SELECT A.id, A.name, A.created_at, A.updated_at, B.name AS parent_name
+     FROM categories A INNER JOIN categories B ON A.parent_id = B.id ORDER BY created_at DESC;';
     $result = $connection->query($sql);
 ?>
 
@@ -26,9 +26,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <th>Parent Name</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                         <th>Actions</th>
@@ -41,13 +39,11 @@
                                 echo '<tr>';
                                 echo "<td>" . $row['id'] . "</td>";
                                 echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['category_name'] . "</td>";
-                                echo "<td>" . $row['price'] . "</td>";
-                                echo "<td>" . $row['quantity'] . "</td>";
+                                echo "<td>" . $row['parent_name'] . "</td>";
                                 echo "<td>" . $row['created_at'] . "</td>";
                                 echo "<td>" . $row['updated_at'] . "</td>";
                                 echo '<td>
-                                <a href="/admin/products/edit.php?id=' . $row['id'] . '" class="btn btn-primary">Edit</a>
+                                <a href="/admin/categories/edit.php?id=' . $row['id'] . '" class="btn btn-primary">Edit</a>
                                     <button data-id="' . $row['id'] .'" class="btn btn-danger btnDeleteProduct">Delete</button>
                                 </td>';
                                 echo '</tr>';
